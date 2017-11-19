@@ -1,0 +1,15 @@
+default: &default
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: <%= Rails.application.secrets[:db_name] %>
+  username: <%= Rails.application.secrets[:username] %>
+  password: <%= Rails.application.secrets[:password] %>
+
+development:
+  adapter: postgresql
+  <<: *default
+
+test:
+  adapter: postgresql
+  <<: *default
